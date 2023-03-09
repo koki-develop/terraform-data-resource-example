@@ -44,6 +44,12 @@ resource "aws_instance" "main" {
   subnet_id              = data.aws_subnet.main.id
   vpc_security_group_ids = [aws_security_group.instance.id]
   instance_type          = "t2.micro"
+
+  lifecycle {
+    replace_triggered_by = [
+      terraform_data.for_replace_trigger,
+    ]
+  }
 }
 
 resource "aws_security_group" "instance" {

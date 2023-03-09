@@ -1,3 +1,7 @@
+resource "terraform_data" "for_replace_trigger" {
+  input = 1
+}
+
 resource "null_resource" "main" {
   # インスタンスの ID が変わった ( インスタンスが作り直された ) ときにコマンドを実行する例
   triggers = {
